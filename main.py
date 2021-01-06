@@ -101,8 +101,6 @@ for track1 in tracks:
     track = Track(name=track1[0], year=track1[1], duration=track1[2], albumid=track1[3])
     session.add(track)
 
-session.commit()
-
 for pg in PG:
     perf_genre = PerformerGenre(performerid=pg[0], genreid=pg[1])
     session.add(perf_genre)
@@ -140,5 +138,3 @@ for p in session.execute(select([Performer.name]).where((func.length(Performer.n
 #my
 for p in session.execute(select([Track.name]).where(func.lower(Track.name).ilike('%my%'))):
     print(p[0])
-
-select
